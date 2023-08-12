@@ -3,7 +3,10 @@
   $: ({ supabase } = data);
 
   const handleSignIn = async () => {
-    await supabase.auth.signInWithOAuth({ provider: 'github' });
+    await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: { redirectTo: `${location.origin}/auth/callback` }
+    });
   };
 
   const handleSignOut = async () => {
